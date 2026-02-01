@@ -1,0 +1,69 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+  }
+  
+  .card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+    width: 360px;
+  }
+  
+  h1 {
+    color: #ff4d6d;
+    margin-bottom: 30px;
+  }
+  
+  .buttons {
+    position: relative;
+    height: 100px;
+    width: 100%;
+  }
+  
+  #yes {
+    position: absolute;
+    left: 40px;              /* FIXED SAFE POSITION */
+    top: 35px;
+    background-color: #ff4d6d;
+    color: white;
+    padding: 12px 28px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+  }
+  
+  #no {
+    position: absolute;
+    left: 200px;             /* START RIGHT SIDE */
+    top: 35px;
+    background-color: #999;
+    color: white;
+    padding: 12px 28px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+  }
+  
+  .celebrate {
+    display: none;
+  }
+  
+  .celebrate h1 {
+    font-size: 38px;
+  }
+  
