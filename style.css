@@ -30,8 +30,6 @@ h1 {
   position: relative;
   height: 110px;
   width: 100%;
-  border: 2px dashed #f3b1bb; /* visual reference (optional) */
-  border-radius: 12px;
 }
 
 button {
@@ -52,7 +50,7 @@ button {
 }
 
 #yes.clicked {
-  background-color: #2ecc71; /* green success */
+  background-color: #2ecc71;
   transform: scale(1.05);
 }
 
