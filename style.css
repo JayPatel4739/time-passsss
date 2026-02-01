@@ -1,69 +1,73 @@
 * {
-    box-sizing: border-box;
-  }
-  
-  body {
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-    font-family: Arial, sans-serif;
-    overflow: hidden;
-  }
-  
-  .card {
-    background: white;
-    padding: 40px;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-    width: 360px;
-  }
-  
-  h1 {
-    color: #ff4d6d;
-    margin-bottom: 30px;
-  }
-  
-  .buttons {
-    position: relative;
-    height: 100px;
-    width: 100%;
-  }
-  
-  #yes {
-    position: absolute;
-    left: 40px;              /* FIXED SAFE POSITION */
-    top: 35px;
-    background-color: #ff4d6d;
-    color: white;
-    padding: 12px 28px;
-    font-size: 18px;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-  }
-  
-  #no {
-    position: absolute;
-    left: 200px;             /* START RIGHT SIDE */
-    top: 35px;
-    background-color: #999;
-    color: white;
-    padding: 12px 28px;
-    font-size: 18px;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-  }
-  
-  .celebrate {
-    display: none;
-  }
-  
-  .celebrate h1 {
-    font-size: 38px;
-  }
-  
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  font-family: Arial, sans-serif;
+}
+
+.card {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+  width: 360px;
+}
+
+h1 {
+  color: #ff4d6d;
+  margin-bottom: 25px;
+}
+
+.buttons {
+  position: relative;
+  height: 110px;
+  width: 100%;
+  border: 2px dashed #f3b1bb; /* visual reference (optional) */
+  border-radius: 12px;
+}
+
+button {
+  padding: 12px 28px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#yes {
+  position: absolute;
+  left: 40px;
+  top: 38px;
+  background-color: #ff4d6d;
+  color: white;
+}
+
+#yes.clicked {
+  background-color: #2ecc71; /* green success */
+  transform: scale(1.05);
+}
+
+#no {
+  position: absolute;
+  left: 200px;
+  top: 38px;
+  background-color: #999;
+  color: white;
+}
+
+#message {
+  margin-top: 25px;
+  font-size: 22px;
+  color: #ff4d6d;
+  font-weight: bold;
+  display: none;
+}
