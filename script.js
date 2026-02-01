@@ -3,44 +3,52 @@ const yesBtn = document.getElementById("yes");
 const buttonsArea = document.querySelector(".buttons");
 const message = document.getElementById("message");
 
-function moveNoButton() {
-  const padding = 12; // border ke thode andar
+function moveNoButton(intensity = 1) {
+  const padding = 12;
   const areaWidth = buttonsArea.offsetWidth;
   const areaHeight = buttonsArea.offsetHeight;
 
-  // RIGHT SIDE ONLY (YES se door)
+  // Right side only (YES se door)
   const minX = areaWidth / 2 + padding;
   const maxX = areaWidth - noBtn.offsetWidth - padding;
 
   const minY = padding;
   const maxY = areaHeight - noBtn.offsetHeight - padding;
 
-  const randomX = Math.random() * (maxX - minX) + minX;
-  const randomY = Math.random() * (maxY - minY) + minY;
+  // intensity = 1 → hover
+  // intensity = 1.6 → click (drastic jump)
+  const randomX =
+    Math.random() * (maxX - minX) * intensity + minX;
+  const randomY =
+    Math.random() * (maxY - minY) * intensity + minY;
 
-  noBtn.style.left = randomX + "px";
-  noBtn.style.top = randomY + "px";
+  noBtn.style.left = Math.min(randomX, maxX) + "px";
+  noBtn.style.top = Math.min(randomY, maxY) + "px";
 }
 
-// Hover + Click dono pe bhaage
-noBtn.addEventListener("mouseenter", moveNoButton);
+// Hover → normal jump
+noBtn.addEventListener("mouseenter", () => {
+  moveNoButton(1);
+});
+
+// Click → DRASTIC jump
 noBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  moveNoButton();
+  moveNoButton(1.6);
 });
 
 yesBtn.addEventListener("click", () => {
   // Color change
   yesBtn.classList.add("clicked");
 
-  // Message show
+  // Show message
   message.style.display = "block";
   message.textContent = "I knew it 😏💖";
 
   // Confetti
   confetti({
-    particleCount: 220,
-    spread: 100,
+    particleCount: 250,
+    spread: 110,
     origin: { y: 0.6 }
   });
 });
