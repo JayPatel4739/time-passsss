@@ -4,51 +4,51 @@ const buttonsArea = document.querySelector(".buttons");
 const message = document.getElementById("message");
 
 function moveNoButton(intensity = 1) {
-  const padding = 12;
+  const padding = 8; // border ke andar rahe
   const areaWidth = buttonsArea.offsetWidth;
   const areaHeight = buttonsArea.offsetHeight;
 
-  // Right side only (YES se door)
-  const minX = areaWidth / 2 + padding;
+  // YES ke paas aane dena (thoda overlap allowed 😈)
+  const minX = 15;
   const maxX = areaWidth - noBtn.offsetWidth - padding;
 
   const minY = padding;
   const maxY = areaHeight - noBtn.offsetHeight - padding;
 
-  // intensity = 1 → hover
-  // intensity = 1.6 → click (drastic jump)
-  const randomX =
+  let randomX =
     Math.random() * (maxX - minX) * intensity + minX;
-  const randomY =
+  let randomY =
     Math.random() * (maxY - minY) * intensity + minY;
 
-  noBtn.style.left = Math.min(randomX, maxX) + "px";
-  noBtn.style.top = Math.min(randomY, maxY) + "px";
+  // Clamp so button bahar na jaye
+  randomX = Math.max(minX, Math.min(randomX, maxX));
+  randomY = Math.max(minY, Math.min(randomY, maxY));
+
+  noBtn.style.left = randomX + "px";
+  noBtn.style.top = randomY + "px";
 }
 
-// Hover → normal jump
+// Hover → bhaag
 noBtn.addEventListener("mouseenter", () => {
   moveNoButton(1);
 });
 
-// Click → DRASTIC jump
+// Click → aur zyada bhaag (teleport feel)
 noBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  moveNoButton(1.6);
+  moveNoButton(1.8);
 });
 
+// YES → victory 🎉
 yesBtn.addEventListener("click", () => {
-  // Color change
   yesBtn.classList.add("clicked");
 
-  // Show message
   message.style.display = "block";
   message.textContent = "I knew it 😏💖";
 
-  // Confetti
   confetti({
-    particleCount: 250,
-    spread: 110,
+    particleCount: 260,
+    spread: 120,
     origin: { y: 0.6 }
   });
 });
