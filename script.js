@@ -1,19 +1,19 @@
 const noBtn = document.getElementById("no");
 const yesBtn = document.getElementById("yes");
 const buttonsArea = document.querySelector(".buttons");
-const questionCard = document.getElementById("questionCard");
-const celebrateCard = document.getElementById("celebrateCard");
+const message = document.getElementById("message");
 
 function moveNoButton() {
+  const padding = 12; // border ke thode andar
   const areaWidth = buttonsArea.offsetWidth;
   const areaHeight = buttonsArea.offsetHeight;
 
   // RIGHT SIDE ONLY (YES se door)
-  const minX = areaWidth / 2;
-  const maxX = areaWidth - noBtn.offsetWidth;
+  const minX = areaWidth / 2 + padding;
+  const maxX = areaWidth - noBtn.offsetWidth - padding;
 
-  const minY = 10;
-  const maxY = areaHeight - noBtn.offsetHeight - 10;
+  const minY = padding;
+  const maxY = areaHeight - noBtn.offsetHeight - padding;
 
   const randomX = Math.random() * (maxX - minX) + minX;
   const randomY = Math.random() * (maxY - minY) + minY;
@@ -22,21 +22,24 @@ function moveNoButton() {
   noBtn.style.top = randomY + "px";
 }
 
-// Hover par bhi
+// Hover + Click dono pe bhaage
 noBtn.addEventListener("mouseenter", moveNoButton);
-
-// Click par bhi
 noBtn.addEventListener("click", (e) => {
-  e.preventDefault();   // just in case
+  e.preventDefault();
   moveNoButton();
 });
 
 yesBtn.addEventListener("click", () => {
-  questionCard.style.display = "none";
-  celebrateCard.style.display = "block";
+  // Color change
+  yesBtn.classList.add("clicked");
 
+  // Message show
+  message.style.display = "block";
+  message.textContent = "I knew it 😏💖";
+
+  // Confetti
   confetti({
-    particleCount: 200,
+    particleCount: 220,
     spread: 100,
     origin: { y: 0.6 }
   });
