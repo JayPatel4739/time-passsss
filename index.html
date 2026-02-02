@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Will you be my valentine?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- QUESTION CARD -->
+  <div class="card" id="questionCard">
+    <h1>Will you be my valentine? 💖</h1>
+
+    <div class="buttons">
+      <button id="yes">Yes</button>
+      <button id="no">No</button>
+    </div>
+
+    <!-- Message shows after YES click -->
+    <div id="message"></div>
+  </div>
+
+  <!-- Confetti library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- EmailJS library -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+  <!-- EmailJS init (IMPORTANT) -->
+  <script>
+    (function () {
+      emailjs.init("WvWnABaM79PNtUYLl");
+    })();
+  </script>
+
+  <!-- Your main logic -->
+  <script src="script.js"></script>
+
+</body>
+</html>
