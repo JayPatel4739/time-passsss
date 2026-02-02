@@ -37,7 +37,7 @@ yesBtn.addEventListener("click", () => {
   yesBtn.classList.add("clicked");
 
   message.style.display = "block";
-  message.textContent = "I knew it 😏💖";
+  message.textContent = "I knew it 💖";
 
   // 🎉 Confetti
   confetti({
