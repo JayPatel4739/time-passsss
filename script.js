@@ -1,57 +1,28 @@
-const noBtn = document.getElementById("no");
 const yesBtn = document.getElementById("yes");
-const buttonsArea = document.querySelector(".buttons");
-const message = document.getElementById("message");
+const noBtn = document.getElementById("no");
+const questionScreen = document.getElementById("questionScreen");
+const wishScreen = document.getElementById("wishScreen");
 
-function moveNoButton(intensity = 1) {
-  const padding = 8;
-  const areaWidth = buttonsArea.offsetWidth;
-  const areaHeight = buttonsArea.offsetHeight;
-
-  const minX = 15;
-  const maxX = areaWidth - noBtn.offsetWidth - padding;
-  const minY = padding;
-  const maxY = areaHeight - noBtn.offsetHeight - padding;
-
-  let randomX =
-    Math.random() * (maxX - minX) * intensity + minX;
-  let randomY =
-    Math.random() * (maxY - minY) * intensity + minY;
-
-  randomX = Math.max(minX, Math.min(randomX, maxX));
-  randomY = Math.max(minY, Math.min(randomY, maxY));
-
-  noBtn.style.left = randomX + "px";
-  noBtn.style.top = randomY + "px";
+function moveYesButton() {
+  const area = document.querySelector(".buttons");
+  const pad = 8;
+  const maxX = area.offsetWidth  - yesBtn.offsetWidth  - pad;
+  const maxY = area.offsetHeight - yesBtn.offsetHeight - pad;
+  yesBtn.style.left = Math.max(pad, Math.random() * maxX) + "px";
+  yesBtn.style.top  = Math.max(pad, Math.random() * maxY) + "px";
 }
 
-// Hover + click
-noBtn.addEventListener("mouseenter", () => moveNoButton(1));
-noBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  moveNoButton(1.8);
-});
+yesBtn.addEventListener("mouseenter", moveYesButton);
+yesBtn.addEventListener("click", moveYesButton);
 
-// YES CLICK
-yesBtn.addEventListener("click", () => {
-  yesBtn.classList.add("clicked");
+noBtn.addEventListener("click", () => {
+  questionScreen.classList.add("hidden");
+  wishScreen.classList.remove("hidden");
+  yesBtn.style.display = "none";
 
-  message.style.display = "block";
-  message.textContent = "I knew it 💖";
-
-  // 🎉 Confetti
-  confetti({
-    particleCount: 260,
-    spread: 120,
-    origin: { y: 0.6 }
-  });
-
-  // 📧 EMAIL NOTIFICATION
-  emailjs.send(
-    "service_cug6f7x",   // Email Service ID
-    "template_29tq1vg",  // Email Template ID
-    {
-      message: "YES ho gaya 😍 Someone clicked YES on your Valentine page!"
-    }
-  );
+  confetti({ particleCount: 200, spread: 120, origin: { y: 0.6 } });
+  setTimeout(() => {
+    confetti({ particleCount: 100, angle: 60,  spread: 80, origin: { x: 0, y: 0.7 } });
+    confetti({ particleCount: 100, angle: 120, spread: 80, origin: { x: 1, y: 0.7 } });
+  }, 600);
 });

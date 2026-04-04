@@ -2,40 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Will you be my valentine?</title>
+  <title>Exam Wishes 📚</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-  <!-- QUESTION CARD -->
-  <div class="card" id="questionCard">
-    <h1>Will you be my valentine? 💖</h1>
-
-    <div class="buttons">
-      <button id="yes">Yes</button>
-      <button id="no">No</button>
+  <div class="card">
+    <div id="questionScreen">
+<div class="emoji-row">☕ 📚 ✨</div>
+      <h1>Are you stressed for your exams?</h1>
+      <div class="buttons">
+        <button id="yes">Yes</button>
+        <button id="no">No</button>
+      </div>
     </div>
 
-    <!-- Message shows after YES click -->
-    <div id="message"></div>
+    <div id="wishScreen" class="hidden">
+      <div class="big-emoji">🤗</div>
+      <h2>Yes, that's like my partner 👏🏻</h2>
+      <p class="msg">All the very best for your exams! I know how hard you've worked, and I'm so proud of you. Just stay calm, believe in yourself, and give it your best shot—you've got this! 💪🏻✨</p>
+      <p class="msg">I wish I could be there to wish you luck in person, but consider this a big virtual hug 🤗 and tons of positive vibes coming your way.</p>
+      <p class="msg highlight">Go shine and make yourself proud! I'll be cheering for you from afar 📚🌟</p>
+    </div>
   </div>
 
-  <!-- Confetti library -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-  <!-- EmailJS library -->
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
-  <!-- EmailJS init (IMPORTANT) -->
-  <script>
-    (function () {
-      emailjs.init("WvWnABaM79PNtUYLl");
-    })();
-  </script>
-
-  <!-- Your main logic -->
   <script src="script.js"></script>
-
 </body>
 </html>
